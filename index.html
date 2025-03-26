@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Spotify Profile</title>
+    <script src="src/script.js" type="module"></script>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Your Spotify Profile Data</h1>
+
+    <section id="profile">
+        <h2>Logged in as <span id="displayName"></span></h2>
+        <span id="avatar"></span>
+        <ul>
+            <li>User ID: <span id="id"></span></li>
+            <li>Email: <span id="email"></span></li>
+            <li>Spotify URI: <a id="uri" href="#"></a></li>
+            <!-- <li>Link: <a id="url" href="#"></a></li> -->
+            <!-- <li>Profile Image: <span id="imgUrl"></span></li> -->
+        </ul>
+    </section>
+<div class="whole-section">
+    <h2>Top Tracks: </h2>
+    <div class="term-container">
+        <h3>Last 4 Weeks</h3>
+        <ul id="tracksContainer-short_term"></ul>
+    </div>
+    <div class="term-container">
+        <h3>Last 6 Months</h3>
+        <ul id="tracksContainer-medium_term"></ul>
+    </div>
+    <div class="term-container">
+        <h3>Last Year</h3>
+        <ul id="tracksContainer-long_term"></ul>
+    </div>
+</div>
+<div class="whole-section">
+    <h2>Top Artists: </h2>
+    <div class="term-container">
+        <h3>Last 4 Weeks</h3>
+        <ul id="artistsContainer-short_term"></ul>
+    </div>
+    <div class="term-container">
+        <h3>Last 6 Months</h3>
+        <ul id="artistsContainer-medium_term"></ul>
+    </div>
+    <div class="term-container">
+        <h3>Last Year</h3>
+        <ul id="artistsContainer-long_term"></ul>
+    </div>
+</div>
+
+<div class="whole-section">
+    <div class="chart-container">
+        <h2>Recently Played Tracks Popularity</h2>
+        <canvas id="recentPopularityChart"></canvas>
+
+        <h2>Top Tracks Popularity</h2>
+        <canvas id="topTracksPopularityChart"></canvas>
+    </div>
+
+    <div class="chart-container">
+        <h2>Top Genres</h2>
+        <canvas id="genreChart"></canvas>
+    </div>
+</div>
+
+<div class="whole-section">
+    <div class="chart-container">
+        <h2>Last 50 Songs: Active Listening Hours</h2>
+        <canvas id="listeningChart"></canvas>
+    </div>
+
+    <div class="chart-container">
+        <h2>Top Tracks: Old or Young?</h2>
+        <canvas id="releaseYearChart"></canvas>
+    </div>
+</div>
+
+</body>
+</html>
