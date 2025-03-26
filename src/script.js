@@ -1,6 +1,8 @@
+const dotenv = require('dotenv');
+dotenv.config("../.env");
 import Chart from 'chart.js/auto';  // Import Chart.js
 
-const clientId = "1b9d1e5741bc4047acb2037855790b7c"; // Replace with your client ID
+const clientId = CLIENT_ID; // Replace with your client ID
 const params = new URLSearchParams(window.location.search);
 const code = params.get("code");
 
