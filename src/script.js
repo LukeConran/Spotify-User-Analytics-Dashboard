@@ -1,8 +1,9 @@
-const dotenv = require('dotenv');
-dotenv.config("../.env");
-import Chart from 'chart.js/auto';  // Import Chart.js
+import Chart from 'chart.js/auto';
 
-const clientId = CLIENT_ID; // Replace with your client ID
+const clientId = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
+const port = import.meta.env.VITE_PORT || 5173;
+
+// const clientId ='; // Replace with your client ID
 const params = new URLSearchParams(window.location.search);
 const code = params.get("code");
 
@@ -15,7 +16,7 @@ export async function redirectToAuthCodeFlow(clientId) {
     const params = new URLSearchParams();
     params.append("client_id", clientId);
     params.append("response_type", "code");
-    params.append("redirect_uri", "http://localhost:5173/callback");
+    params.append("redirect_uri", `http://localhost:${port}/callback`);
     params.append("scope", "user-read-private user-read-email user-top-read user-read-recently-played user-read-playback-state user-read-currently-playing");
     params.append("code_challenge_method", "S256");
     params.append("code_challenge", challenge);
@@ -54,7 +55,7 @@ export async function getAccessToken(clientId, code) {
     params.append("client_id", clientId);
     params.append("grant_type", "authorization_code");
     params.append("code", code);
-    params.append("redirect_uri", "http://localhost:5173/callback");
+    params.append("redirect_uri", `http://localhost:${port}/callback`);
     params.append("code_verifier", verifier);
 
     const result = await fetch("https://accounts.spotify.com/api/token", {
