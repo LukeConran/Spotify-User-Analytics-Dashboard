@@ -44,13 +44,5 @@ This project creates an interactive web application to visualize Spotify user da
 ## Development
 
 - The app uses Vite for development and bundling.
-- Authentication follows the PKCE flow for secure OAuth 2.0.
+- Authentication follows Spotify's typical PKCE flow for secure OAuth 2.0.
 - Charts are rendered using Chart.js with custom styling.
-
-## Contributing
-
-Feel free to submit issues or pull requests. Ensure any changes align with the existing structure and dependencies.
-
-## License
-
-MIT License - see the LICENSE file for details.
