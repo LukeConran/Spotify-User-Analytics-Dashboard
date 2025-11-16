@@ -17,13 +17,22 @@ This project creates an interactive web application to visualize Spotify user da
    - Add the following environment variables:
      ```
      VITE_SPOTIFY_CLIENT_ID=your_spotify_client_id
-     VITE_PORT=5173
+     VITE_APP_URL=https://your-deployed-site.com
      ```
    - Replace `your_spotify_client_id` with your Spotify Client ID.
+   - Replace `https://your-deployed-site.com` with your deployed URL (for local development, you can use `http://localhost:5173`).
 
-4. **Running the Application**:
+4. **Spotify Developer Settings**:
+   - In your Spotify Developer Dashboard, ensure that your redirect URIs match the app URL:
+     ```
+     http://localhost:5173/       (for local development)
+     https://your-deployed-site.com/  (for production)
+     ```
+   - The redirect URI must exactly match the `VITE_APP_URL` used in your `.env`.
+
+5. **Running the Application**:
    - Start the development server with `npm run dev`.
-   - Open your browser and navigate to `http://localhost:5173`.
+   - Open your browser and navigate to your app URL.
    - Follow the authentication flow to log in with Spotify.
 
 ## Features
@@ -41,8 +50,14 @@ This project creates an interactive web application to visualize Spotify user da
 - Click on track/artist names to visit their Spotify pages.
 - Charts update dynamically based on fetched data.
 
+## Deployment
+
+- The app can be deployed as a static site (e.g., Render, Netlify, Vercel).
+- Ensure the environment variable `VITE_APP_URL` is set to the deployed site URL.
+- Make sure the corresponding redirect URI is registered in Spotify.
+
 ## Development
 
 - The app uses Vite for development and bundling.
-- Authentication follows Spotify's typical PKCE flow for secure OAuth 2.0.
+- Authentication follows Spotify's PKCE flow for secure OAuth 2.0.
 - Charts are rendered using Chart.js with custom styling.
