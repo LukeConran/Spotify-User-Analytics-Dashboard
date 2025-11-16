@@ -3,7 +3,7 @@ import Chart from 'chart.js/auto';
 const clientId = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
 // prefer an explicit VITE_APP_URL, but fall back to current origin for dev/defaults
 const appUrl = import.meta.env.VITE_APP_URL || window.location.origin;
-const redirectUri = `${appUrl}/callback`;
+const redirectUri = `${appUrl}`;
 
 const params = new URLSearchParams(window.location.search);
 const code = params.get("code");
@@ -17,7 +17,7 @@ export async function redirectToAuthCodeFlow(clientId) {
     const params = new URLSearchParams();
     params.append("client_id", clientId);
     params.append("response_type", "code");
-    params.append("redirect_uri", `${appUrl}/callback`);
+    params.append("redirect_uri", `${redirectUri}`);
     params.append("scope", "user-read-private user-read-email user-top-read user-read-recently-played user-read-playback-state user-read-currently-playing");
     params.append("code_challenge_method", "S256");
     params.append("code_challenge", challenge);
@@ -56,7 +56,7 @@ export async function getAccessToken(clientId, code) {
     params.append("client_id", clientId);
     params.append("grant_type", "authorization_code");
     params.append("code", code);
-    params.append("redirect_uri", `${appUrl}/callback`);
+    params.append("redirect_uri", `${redirectUri}`);
     params.append("code_verifier", verifier);
 
     const result = await fetch("https://accounts.spotify.com/api/token", {
